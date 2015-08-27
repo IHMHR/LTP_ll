@@ -1,31 +1,24 @@
 package parte2;
-import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Exercicio2_3 {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
 		int cod, peças = 0, fabricadas = 0, menor = 1000000, peçasB = 0;
 		float sal, gastos = 0;
 		char classe;
 		try {
 			while (true) {
-				System.out.println("Informe o código do funcionário:");
-				cod = in.nextInt();
+				cod = Integer.parseInt(JOptionPane.showInputDialog("Informe o código do funcionário:"));
 				if (cod == 0) {
 					break;
 				}
-				System.out.println("Informe a classe do funcionário:");
-				classe = in.next().charAt(0);
+				classe = JOptionPane.showInputDialog("Informe a classe do funcionário:").charAt(0);
 				while (classe != 'A' && classe != 'B' && classe != 'C') {
-					System.out.println("** Informe a classe do funcionário:");
-					classe = in.next().charAt(0);
+					classe = JOptionPane.showInputDialog("** Informe a classe do funcionário:").charAt(0);
 				}
-				System.out.println("Informe o número de peças fabricadas:");
-				peças = in.nextInt();				
+				peças = Integer.parseInt(JOptionPane.showInputDialog("Informe o número de peças fabricadas:"));
 				while (peças < 0) {
-					System.out.println("** Informe o número de peças fabricadas:");
-					peças = in.nextInt();
+					peças = Integer.parseInt(JOptionPane.showInputDialog("** Informe o número de peças fabricadas:"));
 				}
 				
 				fabricadas += peças;
@@ -49,18 +42,15 @@ public class Exercicio2_3 {
 					sal = 1200;
 				}
 				
-				System.out.println("O salário deste funcionário é R$" + sal + ".");
-				System.out.println();
+				JOptionPane.showMessageDialog(null, "O salário deste funcionário é R$" + sal + ".");
 				gastos += sal;
 			}
-			System.out.println("O total gasto pela empresa com pagamento dos salários é: R$" + gastos + ".");
-			System.out.println("O total de peças fabricadas pela empresa é: " + fabricadas + ".");
-			System.out.println("O Código do operário que fabricou o menor número de peças é: " + menor + ".");
-			System.out.println("O total de peças fabricadas por Colaboradora da Classe B é: " + peçasB + ".");
+			JOptionPane.showMessageDialog(null, "O total gasto pela empresa com pagamento dos salários é: R$" + gastos + ".\n"
+												+ "O total de peças fabricadas pela empresa é: " + fabricadas + ".\n"
+												+ "O Código do operário que fabricou o menor número de peças é: " + menor + ".\n"
+												+ "O total de peças fabricadas por Colaboradora da Classe B é: " + peçasB + ".");
 		} catch (Exception e) {
 			System.err.println(e.getMessage().toString());
-		} finally {
-			in.close();
 		}
 	}
 }

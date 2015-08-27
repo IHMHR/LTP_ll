@@ -1,23 +1,18 @@
 package parte2;
-import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Exercicio2_1 {
 	public static void main(String[] args) {
-		Scanner leia = new Scanner(System.in);
 		
 		try {
 			String[] nomes = new String[10];
 			int[] salarios = new int[10];
 			int[] novosSalarios = new int[10];
 			int[] dependentes = new int[10];
-			//for (int i = 0; i <= nomes.length; i++) {
-			for (int i = 0; i <= 0; i++) {
-				System.out.println("Informe o nome do " + (i + 1) + "º funcionário:");
-				nomes[i] = leia.next();
-				System.out.println("Informe o salário do " + (i + 1) + "º funcionário:");
-				salarios[i] = leia.nextInt();
-				System.out.println("Informe o número de dependentes que o " + (i + 1) + "º funcionário tem:");
-				dependentes[i] = leia.nextInt();
+			for (int i = 0; i <= nomes.length; i++) {
+				nomes[i] = JOptionPane.showInputDialog("Informe o nome do " + (i + 1) + "º funcionário:");
+				salarios[i] = Integer.parseInt(JOptionPane.showInputDialog("Informe o salário do " + (i + 1) + "º funcionário:"));
+				dependentes[i] = Integer.parseInt(JOptionPane.showInputDialog("Informe o número de dependentes que o " + (i + 1) + "º funcionário tem:"));
 				
 				if (salarios[i] <= 1000) {
 					novosSalarios[i] = (int) (salarios[i] * 1.3); 
@@ -64,9 +59,8 @@ public class Exercicio2_1 {
 					novosSalarios[i] += 600;  
 					break;
 				}
-				System.out.println("O novo salário do funcionário é R$" + novosSalarios[i] + ".");
+				JOptionPane.showMessageDialog(null, "O novo salário do funcionário é R$" + novosSalarios[i] + ".");
 			}
-			System.out.println();
 			int soma = 0, cont = 0;
 			for (int j = 0; j < dependentes.length; j++) {
 				soma += novosSalarios[j];
@@ -74,18 +68,15 @@ public class Exercicio2_1 {
 					cont += 1;
 				}
 			}
-			System.out.println("A soma dos novos salários é R$" + soma + ".");
-			System.out.println("A média dos novos salários é R$" + (soma / novosSalarios.length) + ".");
+			JOptionPane.showMessageDialog(null, "A soma dos novos salários é R$" + soma + ".\n"
+					+ "A média dos novos salários é R$" + (soma / novosSalarios.length) + ".");
 			if (cont != 0) {
-				System.out.println("A quantidade de novos salários acima de R$1700,00 é " + cont + " funcionários.");
+				JOptionPane.showMessageDialog(null, "A quantidade de novos salários acima de R$1700,00 é " + cont + " funcionários.");
 			} else {
-				System.out.println("Nenhum funcionário teve reajuste de salário acima de R$1700,00.");
+				JOptionPane.showMessageDialog(null, "Nenhum funcionário teve reajuste de salário acima de R$1700,00.");
 			}
-			
 		} catch (Exception e) {
-			System.out.println(e.getMessage().toString());
-		} finally {
-			leia.close();
+			JOptionPane.showMessageDialog(null, e.getMessage().toString());
 		}
 	}
 }
