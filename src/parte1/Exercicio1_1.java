@@ -1,34 +1,27 @@
 package parte1;
-import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Exercicio1_1 {
-
 	public static void main(String[] args) {
-		Scanner leia = new Scanner(System.in);
 		
 		try	{
-			System.out.println("Informe o nome do aluno:");
-			String aluno = leia.nextLine();
+			String aluno = JOptionPane.showInputDialog("Informe o nome do aluno:"); 
 			int[] nota = new int[3];
 			for(byte i = 1; i <= 3; i++) {
-				System.out.println("Informe a " + i + "º nota do aluno:");
-				nota[i-1] = leia.nextInt();
+				nota[i-1] = Integer.parseInt(JOptionPane.showInputDialog("Informe a " + i + "º nota do aluno:"));
 			}
 			
-			System.out.println("O aluno " + aluno + " teve uma média: " + ((nota[0] + nota[1] + nota[2])/3));
+			JOptionPane.showMessageDialog(null, "O aluno " + aluno + " teve uma média: " + (nota[0] + nota[1] + nota[2])/3);
 
 			if((nota[0] + nota[1] + nota[2])/3 <= 4) {
-				System.out.println("Aluno Reprovado !");
+				JOptionPane.showMessageDialog(null, "Aluno Reprovado !");
 			} else if((nota[0] + nota[1] + nota[2])/3 >= 7) {
-				System.out.println("Aluno Aprovado !");
+				JOptionPane.showMessageDialog(null, "Aluno Aprovado !");
 			} else {
-				System.out.println("Aluno em Recuperação !");
+				JOptionPane.showMessageDialog(null, "Aluno em Recuperação !");
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage().toString());
-		} finally {
-			leia.close();
+			JOptionPane.showMessageDialog(null, e.getMessage().toString());
 		}
-		
 	}
 }
